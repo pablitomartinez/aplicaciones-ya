@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes, useLocation } from "react-router-dom";
+import { createBrowserHistory } from "history";
+import LandingPage from "./components/LandingPage.jsx";
+import Navbar from "./components/Navbar.jsx";
+import Home from "./views/Home.jsx";
+import SobreNosotros from "./views/SobreNosotros.jsx";
+import Footer from "./views/Footer.jsx";
+
+
+const history = createBrowserHistory();
 
 function App() {
+  const location = useLocation();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navbar/>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/sobreNosotros" element={<SobreNosotros />} />
+      </Routes>
+      <Footer/>
     </div>
   );
 }
